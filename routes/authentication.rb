@@ -4,10 +4,13 @@ end
 
 get '/login' do
   # Page where user can log in
+    "Hi!  This is my app.  <a href='/authenticate' > Log in Using Google </a>"
 end
 
 get '/authenticate' do
   # Request authorization
+    redirect user_credentials.authorization_uri.to_s, 303
+
 end
 
 get '/authenticated' do
@@ -29,6 +32,7 @@ get '/authenticated' do
   session[:gender] = info.gender
   session[:name] = info.name
   session[:picture] = info.picture
+  session[:access_token] = user_credentials.access_token
 
   # You could also choose to create/save some of the information to the database instead
   # Only use once your user model is set up

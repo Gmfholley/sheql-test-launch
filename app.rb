@@ -36,8 +36,7 @@ configure do
   unless no_authentication?
     Google::Apis::ClientOptions.default.application_name = 'SheQL'
     Google::Apis::ClientOptions.default.application_version = '1.0.0'
-
-    client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['CLIENT_SECRETS']))
+    client_secrets = Google::APICLientSecrets.load rescue Google::APIClient::ClientSecrets.new(JSON.parse(ENV['CLIENT_SECRETS']))
     authorization = client_secrets.to_authorization
     authorization.scope = 'openid email profile'
 
@@ -53,6 +52,17 @@ def logged_in?
   !session[:access_token].nil?
 end
 
+
+def user_credentials
+  # Build a per-request oauth credential based on token stored in session
+  # which allows us to use a shared API client.
+  @authorization ||= (
+    auth = settings.authorization.dup
+    auth.redirect_uri = to('/authenticated')
+    auth.update_token!(session)
+    auth
+  )
+end
 
 before do
   unless logged_in? || settings.no_auth_neededs.include?(request.path_info) || no_authentication?
