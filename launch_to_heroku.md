@@ -1,18 +1,14 @@
-- Git Add and Git Commit everything on master
+## Launching your app to Heroku
 
-- Push master back to GitHub
-
-- Teacher will run command `heroku create name-of-app` and the app will be created.  Write down the entire domain of the new app.
-
-- If Google Auth is set up, go back to [developer's console](https://console.developers.google.com) and add the new domain + '/authenticated' as an Authorized redirect URI.
+1. Git Add and Git Commit everything on master
+1. Push master back to GitHub
+1. Teacher will run command `heroku create name-of-app` and the app will be created.  Write down the entire domain of the new app.
+1. If Google Auth is set up, go back to [developer's console](https://console.developers.google.com) and add the new domain + '/authenticated' as an Authorized redirect URI.
  REDOWNLOAD your client_secrets.json file after you updated your account.
- - NOTE: you must hit Save after you add the new URI, and if it doesn't redirect you out of the redirect URI screen when you hit Save, it isn't really saved.
-
-
-- Push your repo to Heroku
+   - NOTE: you must hit Save after you add the new URI, and if it doesn't redirect you out of the redirect URI screen when you hit Save, it isn't really saved.
+1. Push your repo to Heroku
 `git push heroku master` => Why does this work?  Because your teacher added `heroku` as a remote repository, just like GitHub is a remote repository.  So now that it is created, you can push.
-
-- Set environmental variables
+1. Set environmental variable for client secrets.  
 In command line, type:
 
 `heroku config:set CLIENT_SECRETS='` and then paste the entire content of your `client_secrets.json` file and end your single quote.  You must use single quotes around our CLIENT_SECRETS, not double quotes.  Do you not add anything else.  An example might look like:
@@ -24,10 +20,10 @@ In command line, type:
 
 Your app should be running.
 
+## Steps taken prior to this launch
 
-
-1. config.ru file needs to be added to the route to let Heroku know what to run.
-1. Change your  unless no_authentication?` block in `app.rb` to alternatively load secrets from an environmental variable.
+1. config.ru file was added to the root to let Heroku know what to run.
+1. The `unless no_authentication?` block in `app.rb` was modified to alternatively load secrets from an environmental variable.
 
 ```
   # set up authorization
