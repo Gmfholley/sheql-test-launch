@@ -37,7 +37,7 @@ configure do
     Google::Apis::ClientOptions.default.application_name = 'SheQL'
     Google::Apis::ClientOptions.default.application_version = '1.0.0'
 
-    client_secrets = Google::APIClient::ClientSecrets.load rescue Google::APIClient::ClientSecrets.new(JSON.parse(ENV['CLIENT_SECRETS']))
+    client_secrets = Google::APIClient::ClientSecrets.new(JSON.parse(ENV['CLIENT_SECRETS']))
     authorization = client_secrets.to_authorization
     authorization.scope = 'openid email profile'
 
