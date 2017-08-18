@@ -20,7 +20,7 @@ set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 def logger; settings.logger end
 
 def no_authentication?
-  true
+  false
 end
 
 configure do
@@ -31,6 +31,18 @@ configure do
   logger = Logger.new(log_file)
   logger.level = Logger::DEBUG
 
+
+  # set up authorization
+  unless no_authentication?
+    Google::Apis::ClientOptions.default.application_name = 'SheQL'
+    Google::Apis::ClientOptions.default.application_version = '1.0.0'
+
+    client_secrets = Google::APIClient::ClientSecrets.load rescue Google::APIClient::ClientSecrets.new(JSON.parse(ENV['CLIENT_SECRETS']))
+    authorization = client_secrets.to_authorization
+    authorization.scope = 'openid email profile'
+
+    set :authorization, authorization
+  end
 
   set :no_auth_neededs, ['/login', '/authenticate', '/authenticated']
 
