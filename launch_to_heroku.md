@@ -18,7 +18,7 @@ In command line, type:
 `heroku config:set CLIENT_SECRETS='` and then paste the entire content of your `client_secrets.json` file and end your single quote.  You must use single quotes around our CLIENT_SECRETS, not double quotes.  Do you not add anything else.  An example might look like:
 
 ```
-  $ heroku config:set CLIENT_SECRETS='{"web":{"client_id":"long-id.apps.googleusercontent.com","project_id":"sheql-175101","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"some-secret-string","redirect_uris":["https://test-gmfholley.c9users.io/authenticated","http://localhost:4567/authenticated","https://sheql-test.herokuapp.com/authenticated"]}}''
+  $ heroku config:set CLIENT_SECRETS='{"web":{"client_id":"long-id.apps.googleusercontent.com","project_id":"sheql-175101","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"some-secret-string","redirect_uris":["https://test-gmfholley.c9users.io/authenticated","http://localhost:4567/authenticated","https://sheql-test.herokuapp.com/authenticated"]}}'
 
 ```
 
