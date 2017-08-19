@@ -18,7 +18,9 @@ In command line, type:
 
 ```
 
-Your app should be running.
+1. Your app should be running.
+1. Run your migration on Heroku by using the same command but with `heroku run` in front of it: `heroku run db:migrate`.
+1. Run the seed files, if you have them: `heroku run db:seed`.
 
 ## Steps taken prior to this launch
 
