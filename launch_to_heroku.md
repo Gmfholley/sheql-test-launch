@@ -3,8 +3,8 @@
 1. Git Add and Git Commit everything on master
 1. Push master back to GitHub
 1. Teacher will run command `heroku create name-of-app` and the app will be created.  Write down the entire domain of the new app.
-1. If Google Auth is set up, go back to [developer's console](https://console.developers.google.com) and add the new domain + '/authenticated' as an Authorized redirect URI.
- REDOWNLOAD your client_secrets.json file after you updated your account.
+1. If Google Auth is set up, go back to the Google [developer's console](https://console.developers.google.com) and add the new domain + '/authenticated' as an Authorized redirect URI.
+ Download your client_secrets.json file after you updated your account (it changes after you add another redirect URI).
    - NOTE: you must hit Save after you add the new URI, and if it doesn't redirect you out of the redirect URI screen when you hit Save, it isn't really saved.
 1. Push your repo to Heroku
 `git push heroku master` => Why does this work?  Because your teacher added `heroku` as a remote repository, just like GitHub is a remote repository.  So now that it is created, you can push.
